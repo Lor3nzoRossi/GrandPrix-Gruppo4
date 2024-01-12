@@ -12,7 +12,7 @@ public class Auto extends Thread{
     public String marca;
     public int cilindrata;
     public int potenza;
-    public Pilota pilota;
+    public Pilota pilota;//seles
     
     //costruttore
     public Auto(int cilindrata, int potenza, String marca, Pilota p) {
