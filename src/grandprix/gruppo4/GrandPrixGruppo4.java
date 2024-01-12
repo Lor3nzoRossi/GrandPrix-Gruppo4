@@ -7,7 +7,7 @@ package grandprix.gruppo4;
 
 /**
  *
- * @author lorir
+ * @author lorir, Bighi, La Mantia, Fahim
  */
 public class GrandPrixGruppo4 {
 
