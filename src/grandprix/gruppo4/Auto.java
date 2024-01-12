@@ -12,7 +12,8 @@ public class Auto {
     public int cilindrata;
     public int potenza;
     public String marca;
-
+    
+    //costruttore
     public Auto(int cilindrata, int potenza, String marca) {
         this.cilindrata = cilindrata;
         this.potenza = potenza;
