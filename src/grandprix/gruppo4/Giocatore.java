@@ -9,6 +9,10 @@ package grandprix.gruppo4;
  *
  * @author lorir
  */
-public class Giocatore {
-    
+public class Giocatore extends Thread{
+    public String username;
+
+    public Giocatore(String username) {
+        this.username = username;
+    }
 }
