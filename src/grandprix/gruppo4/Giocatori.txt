@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 wjqpde;wedwq
+=======
+mario,dhvaie
+luigi,nhupvhc
+pippo,hyqzdspl
+paperino,nbkaKeuz
+minnie,ohvndi
+donald,xltoxi 
+daisy,dvubjpc
+gonfietto,fischietto
+sofia,hvznzpnv 
+>>>>>>> 6cf592edb70a1feda5460e04d31d9fd35e536042
