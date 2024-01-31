@@ -15,4 +15,8 @@ public class Giocatore extends Thread{
     public Giocatore(String username) {
         this.username = username;
     }
+    
+    public void creaGara(){
+        
+    }
 }

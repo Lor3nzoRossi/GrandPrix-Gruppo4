@@ -10,16 +10,16 @@ package grandprix.gruppo4;
  */
 public class Auto extends Thread{
     public String marca;
-    public int cilindrata;
-    public int potenza;
+    public String modello;
     public int velocita;
     public Pilota pilota;
     
     //costruttore
-    public Auto(int cilindrata, int potenza, String marca, Pilota p) {
-        this.cilindrata = cilindrata;
-        this.potenza = potenza;
+    public Auto(String marca, String modello, int velocita, Pilota pilota) {
         this.marca = marca;
-        this.pilota = p;
+        this.modello = modello;
+        this.velocita = velocita;
+        this.pilota = pilota;
     }
+    
 }
