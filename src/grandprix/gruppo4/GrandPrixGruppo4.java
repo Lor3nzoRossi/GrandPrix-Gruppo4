@@ -17,10 +17,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GrandPrixGruppo4 {
     public static Scanner scanner = new Scanner(System.in);
-
+    public static ArrayList<Giocatore> elencoGiocatori = new ArrayList<>();
     /**
      * @param args the command line arguments
      */
@@ -51,6 +52,11 @@ public class GrandPrixGruppo4 {
             bw.flush();
             //creazione Giocatore
             Giocatore giocatore = new Giocatore(username);
+            //inserimento nell'elenco dei giocatori registrati
+            elencoGiocatori.add(giocatore);
+            //reindirizzamento a procedura di accesso
+            System.out.println("Inizio procedura di accesso");
+            accedi();
         } catch (IOException ex) {
             System.out.println("Eccezione nell'input: " + ex);
         }
@@ -65,13 +71,25 @@ public class GrandPrixGruppo4 {
         } catch (IOException ex) {
             System.out.println("eccezione: " + ex);
         }
-
+        //controllo se sono stati creati account
         if (!empty) {
             System.out.println("Inserisci l'username: ");
             String username = scanner.nextLine();
             System.out.println("Inserisci la password: ");
             String password = scanner.nextLine();
+            //*CONTROLLO CREDENZIALI IN Giocatori.txt*
+            for(Giocatore giocatore : elencoGiocatori){
+                if(giocatore.username.equals(username)){
+                    System.out.println("Accesso completato con successo.");
+                    System.out.println("["+username+"]Vuoi creare una gara?");
+                    String risposta = scanner.nextLine();
+                    if(risposta.equals("si")){
+                        giocatore.creaGara();
+                    }
+                }
+            }
         } else {
+            //se non vi sono presenti account a cui accedere, reindirizzamento a registrazione
             System.out.println("Nessun account registrato, avvio procedura di registrazione...");
             registra();
         }

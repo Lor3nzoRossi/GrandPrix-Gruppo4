@@ -10,14 +10,16 @@ package grandprix.gruppo4;
  * @author lorir
  */
 public class Gara extends Thread{
-    public int circuit_length; 
+    public String nomeGara;
+    public Circuito circuito;
     public int nGiri;
-    public int pitStop;
+    public int nPitstop;
 
-    public Gara(int circuit_length, int nGiri, int pitStop) {
-        this.circuit_length = circuit_length;
+    public Gara(String nomeGara, int nGiri, int nPitstop,Circuito circuito) {
+        this.nomeGara = nomeGara;
+        this.circuito = circuito;
         this.nGiri = nGiri;
-        this.pitStop = pitStop;
+        this.nPitstop = nPitstop;
     }
     
     

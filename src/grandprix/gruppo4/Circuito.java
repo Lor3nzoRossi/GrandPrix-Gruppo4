@@ -11,12 +11,8 @@ package grandprix.gruppo4;
  */
 public class Circuito {
     public int lunghezza;
-    public int nGiri;
-    public int nPitstop;
 
-    public Circuito(int lunghezza, int nGiri, int nPitstop) {
+    public Circuito(int lunghezza) {
         this.lunghezza = lunghezza;
-        this.nGiri = nGiri;
-        this.nPitstop = nPitstop;
     }
 }

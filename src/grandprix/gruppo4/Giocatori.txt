@@ -1,2 +1,4 @@
 player1;p1
 player2;p2
+banana;joe
+Banana;Joe
