@@ -11,8 +11,11 @@ package grandprix.gruppo4;
  */
 public class Circuito {
     public int lunghezza;
+    public int nGiri;
 
-    public Circuito(int lunghezza) {
+
+    public Circuito(int lunghezza, int nGiri) {
         this.lunghezza = lunghezza;
+        this.nGiri = nGiri;
     }
 }

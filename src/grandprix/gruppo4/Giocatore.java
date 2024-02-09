@@ -11,10 +11,21 @@ package grandprix.gruppo4;
  */
 public class Giocatore extends Thread{
     public String username;
+    private String password;
 
-    public Giocatore(String username) {
+    public Giocatore(String username, String password) {
         this.username = username;
+        this.password = password;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     public void creaGara(){
         System.out.println("["+this.username+"] Avvio procedura di creazione gara..");
@@ -30,8 +41,9 @@ public class Giocatore extends Thread{
         int nGiri = GrandPrixGruppo4.scanner.nextInt();
         GrandPrixGruppo4.scanner.nextLine();
         //Creazione circuito
-        Circuito circuito = new Circuito(circuit_length);
+        Circuito circuito = new Circuito(circuit_length, nGiri);
         //Creazione gara
-        Gara gara = new Gara(nomeGara, nGiri, nPitStop, circuito);
+        Gara gara = new Gara(nomeGara, nPitStop, circuito);
     }
+    
 }

@@ -25,7 +25,34 @@ public class GrandPrixGruppo4 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {   
+    public static void main(String[] args) {  
+        //creazione oggetti Giocatore in Giocatori.txt
+        String line;
+        try {
+            //apertura file in lettura
+            BufferedReader br = new BufferedReader(new FileReader("Giocatori.txt"));
+            //lettura file riga per riga
+            while ((line = br.readLine()) != null){
+                String username;
+                String password;
+                //suddivisione linea in username e password
+                for (int i = 0; i < line.length(); i++) {
+                    if (line.charAt(i) == ';') {
+                        username = line.substring(0, i);
+                        password = line.substring(i + 1);
+                        //creazione giocatore
+                        Giocatore giocatore = new Giocatore(username, password);
+                        elencoGiocatori.add(giocatore);
+                        break;
+                    }
+                }
+            }
+        }catch (FileNotFoundException ex) {
+            System.out.println("file non trovato");
+        } 
+        catch (IOException ex) {
+            System.out.println(ex);
+        }
         //Login or signup
         System.out.println("Vuoi eseguire l'accesso? Oppure la registrazione?(accesso/registrazione)");
         String LoginOrSignup = scanner.nextLine();
@@ -51,11 +78,12 @@ public class GrandPrixGruppo4 {
             bw.write('\n');
             bw.flush();
             //creazione Giocatore
-            Giocatore giocatore = new Giocatore(username);
+            Giocatore giocatore = new Giocatore(username, password);
             //inserimento nell'elenco dei giocatori registrati
             elencoGiocatori.add(giocatore);
             //reindirizzamento a procedura di accesso
             System.out.println("Inizio procedura di accesso");
+            //inizio procedura di accesso
             accedi();
         } catch (IOException ex) {
             System.out.println("Eccezione nell'input: " + ex);
@@ -64,7 +92,7 @@ public class GrandPrixGruppo4 {
     public static void accedi() {
         boolean empty = false;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/grandprix/gruppo4/Giocatori.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Giocatori.txt"))) {
             if (br.readLine() == null) {
                 empty = true;
             }
@@ -79,7 +107,7 @@ public class GrandPrixGruppo4 {
             String password = scanner.nextLine();
             //*CONTROLLO CREDENZIALI IN Giocatori.txt*
             for(Giocatore giocatore : elencoGiocatori){
-                if(giocatore.username.equals(username)){
+                if(giocatore.username.equals(username) ){
                     System.out.println("Accesso completato con successo.");
                     System.out.println("["+username+"]Vuoi creare una gara?");
                     String risposta = scanner.nextLine();
