@@ -40,6 +40,7 @@ public class GrandPrixGruppo4 {
                     if (line.charAt(i) == ';') {
                         username = line.substring(0, i);
                         password = line.substring(i + 1);
+                        System.out.println(username + " " + password);
                         //creazione giocatore
                         Giocatore giocatore = new Giocatore(username, password);
                         elencoGiocatori.add(giocatore);
@@ -66,7 +67,7 @@ public class GrandPrixGruppo4 {
         }
     }
     public static void registra(){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/grandprix/gruppo4/Giocatori.txt", true))) {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("Giocatori.txt", true))) {
             System.out.println("Inserisci l'username: ");
             String username = scanner.nextLine();
             System.out.println("Inserisci la password: ");
