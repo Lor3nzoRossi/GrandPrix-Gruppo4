@@ -109,12 +109,22 @@ public class GrandPrixGruppo4 {
             //*CONTROLLO CREDENZIALI IN Giocatori.txt*
             for(Giocatore giocatore : elencoGiocatori){
                 if(giocatore.username.equals(username) ){
-                    System.out.println("Accesso completato con successo.");
-                    System.out.println("["+username+"]Vuoi creare una gara?");
-                    String risposta = scanner.nextLine();
-                    if(risposta.equals("si")){
-                        giocatore.creaGara();//inizio procedura di creazione gara
+                    if(giocatore.getPassword().equals(password)){
+                        System.out.println("Accesso completato con successo.");
+                        System.out.println("["+username+"]Vuoi creare una gara?");
+                        String risposta = scanner.nextLine();
+                        if(risposta.equals("si")){
+                            giocatore.creaGara();//inizio procedura di creazione gara
+                        }
+                    }else{
+                        System.err.println("Password errata. Reinizializzazione procedura di accesso...");
+                        accedi();
+                        break;
                     }
+                }else{
+                    System.err.println("Username non trovato. Reinizializzazione procedura di accesso");
+                    accedi();
+                    break;
                 }
             }
         } else {

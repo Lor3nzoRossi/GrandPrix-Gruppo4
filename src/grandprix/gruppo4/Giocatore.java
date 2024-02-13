@@ -33,24 +33,19 @@ public class Giocatore extends Thread{
     //Creazione gara
     public void creaGara(){
         System.out.println("["+this.username+"] Avvio procedura di creazione gara..");
-        System.out.println("Inserisci il nome della gara: ");
+        System.out.println("[" + this.username + "] Inserisci il nome della gara: ");
         String nomeGara = GrandPrixGruppo4.scanner.nextLine();
-        System.out.println("Inserisci il numero di possibili pitstop: ");
+        System.out.println("[" + this.username + "] Inserisci il numero di possibili pitstop: ");
         int nPitStop = GrandPrixGruppo4.scanner.nextInt();
         //Creazione elenco di auto
         ArrayList<Auto> elencoAuto = new ArrayList<>();
-        System.out.println("Quante auto vuoi far gareggiare?");
+        System.out.println("[" + this.username + "] Quante auto vuoi far gareggiare?");
         int nAuto = GrandPrixGruppo4.scanner.nextInt();
-        System.out.println("nauto: " + nAuto);
         GrandPrixGruppo4.scanner.nextLine();
         for(int i=0;i<nAuto;i++){
+            System.out.println("[" + this.username + "] inizio procedura di creazione "+(i+1)+"° auto...");
             Auto auto = creaAuto();
-            if(auto != null){
-                elencoAuto.add(auto);
-            }else{
-                System.out.println("Errore nella creazione dell'auto, riavvio procedura di creazione...");
-                auto = creaAuto();
-            }
+            elencoAuto.add(auto);
         }
         //Creazione oggetto gara
         Gara gara = new Gara(nomeGara, nPitStop, creaCircuito(), elencoAuto);
@@ -58,11 +53,11 @@ public class Giocatore extends Thread{
     //Creazione del circuito
     public Circuito creaCircuito(){
         //Input lunghezza circuito
-        System.out.println("Inserisci la lunghezza del circuito: ");
+        System.out.println("[" + this.username + "] Inserisci la lunghezza del circuito: ");
         int circuit_length = GrandPrixGruppo4.scanner.nextInt();
         GrandPrixGruppo4.scanner.nextLine();
         //Input del numero di giri
-        System.out.println("Inserisci il numero di giri da effettuare");
+        System.out.println("[" + this.username + "] Inserisci il numero di giri da effettuare");
         int nGiri = GrandPrixGruppo4.scanner.nextInt();
         GrandPrixGruppo4.scanner.nextLine();
         //Creazione circuito
@@ -71,11 +66,21 @@ public class Giocatore extends Thread{
     }
     //creazione automobile
     public Auto creaAuto(){
-        System.out.println("Inserisci il modello della nuova auto");
+        System.out.println("[" + this.username + "] Inserisci il modello della nuova auto");
         String modello = GrandPrixGruppo4.scanner.nextLine();
         //scelta pilota
         Pilota pilota;
-        System.out.println("Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");
+        do{
+            pilota = creaPilota();
+            if(pilota == null){
+                System.err.println("[" + this.username + "] Errore nella creazione di "+modello+". Scegli un pilota presente nella lista mostrata.");
+            }
+        }while(pilota == null);
+        System.out.println("[" + this.username + "] Auto " + modello + " creata con successo.");
+        return new Auto(modello,pilota);
+    }
+    public Pilota creaPilota(){
+        System.out.println("[" + this.username + "] Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");
         //Stampa elenco piloti disponibili
         try(BufferedReader br = new BufferedReader(new FileReader("piloti.txt"))){
             String line;
@@ -94,10 +99,8 @@ public class Giocatore extends Thread{
                     if(line.charAt(i) == ':'){
                         String nome = line.substring(0, i);
                         int anni = Integer.parseInt(line.substring(i + 2));
-                        
                         if(nome.equals(pilotaScelto)){
-                            pilota = new Pilota(nome, anni);
-                            return new Auto(modello,pilota);
+                            return new Pilota(nome, anni);
                         }
                     }
                 }
