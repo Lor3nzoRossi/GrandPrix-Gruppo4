@@ -20,8 +20,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class GrandPrixGruppo4 {
-    public static Scanner scanner = new Scanner(System.in);
-    public static ArrayList<Giocatore> elencoGiocatori = new ArrayList<>();
+    public static Scanner scanner = new Scanner(System.in);// statico in modo da creare una sola istanza riutilizzabile
+    public static ArrayList<Giocatore> elencoGiocatori = new ArrayList<>(); 
     /**
      * @param args the command line arguments
      */
@@ -113,7 +113,7 @@ public class GrandPrixGruppo4 {
                     System.out.println("["+username+"]Vuoi creare una gara?");
                     String risposta = scanner.nextLine();
                     if(risposta.equals("si")){
-                        giocatore.creaGara();
+                        giocatore.creaGara();//inizio procedura di creazione gara
                     }
                 }
             }

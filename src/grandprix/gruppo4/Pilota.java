@@ -12,13 +12,9 @@ package grandprix.gruppo4;
 public class Pilota {
     public String nome;
     public int anni;
-    public Giocatore giocatore;
     
-    public Pilota(String nome, int anni, Giocatore giocatore) {
+    public Pilota(String nome, int anni) {
         this.nome = nome;
         this.anni = anni;
-        this.giocatore = giocatore;
     }
-    
-    
 }
