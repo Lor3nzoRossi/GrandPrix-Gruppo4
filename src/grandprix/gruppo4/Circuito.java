@@ -5,17 +5,42 @@
  */
 package grandprix.gruppo4;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author lorir
  */
-public class Circuito {
+public class Circuito extends Thread{
     public int lunghezza;
     public int nGiri;
+    public ArrayList<Auto> elencoAuto = new ArrayList<>();
+    public ArrayList<Pilota> classifica = new ArrayList<>();
 
 
     public Circuito(int lunghezza, int nGiri) {
         this.lunghezza = lunghezza;
         this.nGiri = nGiri;
+    }
+
+    @Override
+    public void run() {
+        try {
+            sleep(5000);
+        } catch (Exception e) {
+        }
+        svolgimento();
+    }
+    
+    //svolgimento della gara
+    public void svolgimento(){
+        //partenza di ciascuna auto
+        for(Auto auto : this.elencoAuto){
+            auto.start(); 
+        }
+    }
+    public void addAuto(Auto a){
+        elencoAuto.add(a);
     }
 }

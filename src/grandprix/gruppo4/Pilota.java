@@ -12,9 +12,11 @@ package grandprix.gruppo4;
 public class Pilota {
     public String nome;
     public int anni;
+    public String modello;
     
-    public Pilota(String nome, int anni) {
+    public Pilota(String nome, int anni, String modello) {
         this.nome = nome;
         this.anni = anni;
+        this.modello = modello;
     }
 }

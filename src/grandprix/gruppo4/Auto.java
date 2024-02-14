@@ -9,7 +9,8 @@ package grandprix.gruppo4;
  * @author Studente
  */
 public class Auto extends Thread {
-
+    
+    public long tempo;
     private String modello;
     private int velocita = 10; //valore fisso
     private int distanzaPercorsa;
@@ -26,6 +27,7 @@ public class Auto extends Thread {
     //comportamento di ciascuna auto
     @Override
     public void run() {
+        long timeStart = System.currentTimeMillis();
         int giroCorrente = 1;
         int nGiri = this.circuito.nGiri;
         int distanzaPercorsa = this.distanzaPercorsa;
@@ -43,7 +45,7 @@ public class Auto extends Thread {
                 }
             }
             // Auto ha completato il giro
-            System.out.println("[**" + this.modello + "**] - Ha completato il "+giroCorrente+"°!");
+            System.out.println("[**" + this.modello + "**] - Ha completato il "+giroCorrente+"° giro!");
             distanzaPercorsa = this.distanzaPercorsa; // Reset della distanza percorsa
             giroCorrente++; // incremento giro corrente
             nGiri--; // diminuzione giri da percorrrere
@@ -51,5 +53,8 @@ public class Auto extends Thread {
 
         // Auto ha completato il circuito
         System.out.println("[**" + this.modello + "**] - Ha completato il circuito!");
+        long timeEnd = System.currentTimeMillis();
+        this.tempo = timeEnd - timeStart;
+        
     }
 }

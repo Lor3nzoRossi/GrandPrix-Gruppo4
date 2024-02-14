@@ -34,30 +34,32 @@ public class Giocatore extends Thread{
     public void creaGara(){
         System.out.println("["+this.username+"] Avvio procedura di creazione gara..");
         System.out.println("["+this.username+"]Creazione circuito...");
-        Circuito circuito = creaCircuito();
+        Circuito circuito = creaCircuito(); // creazione circuito
         System.out.println("[" + this.username + "] Inserisci il nome della gara: ");
         String nomeGara = GrandPrixGruppo4.scanner.nextLine();
         System.out.println("[" + this.username + "] Inserisci il numero di possibili pitstop: ");
         int nPitStop = GrandPrixGruppo4.scanner.nextInt();
-        //Creazione elenco di auto
-        ArrayList<Auto> elencoAuto = new ArrayList<>();
+        //creazione auto
         System.out.println("[" + this.username + "] Quante auto vuoi far gareggiare?");
         int nAuto = GrandPrixGruppo4.scanner.nextInt();
         GrandPrixGruppo4.scanner.nextLine();
         for(int i=0;i<nAuto;i++){
             System.out.println("[" + this.username + "] inizio procedura di creazione "+(i+1)+"° auto...");
             Auto auto = creaAuto(circuito);
-            elencoAuto.add(auto);
+            circuito.elencoAuto.add(auto);
         }
         //Creazione oggetto gara
-        Gara gara = new Gara(nomeGara, nPitStop, elencoAuto);
+        Gara gara = new Gara(nomeGara, nPitStop, circuito);
         System.out.println("Creazione gara con successo.");
         System.out.println("Iniziare la gara?");
         String iniziaGara = GrandPrixGruppo4.scanner.nextLine();
         
         if(iniziaGara.equals("si")){
-            gara.svolgimento();
+            System.out.println("||INIZIO GARA||");
+            circuito.start();
         }
+        //mostra classifica *PROBLEMA: far eseguire gara.start() o gara.classifica() dopo la terminazione dei Thread auto chiamati da circuito.start() o circuito.svolgimento()
+        gara.start();
     }
     //Creazione del circuito
     public Circuito creaCircuito(){
@@ -80,7 +82,7 @@ public class Giocatore extends Thread{
         //scelta pilota
         Pilota pilota;
         do{
-            pilota = creaPilota();
+            pilota = creaPilota(modello);
             if(pilota == null){
                 System.err.println("[" + this.username + "] Errore nella creazione di "+modello+". Scegli un pilota presente nella lista mostrata.");
             }
@@ -88,7 +90,7 @@ public class Giocatore extends Thread{
         System.out.println("[" + this.username + "] Auto " + modello + " creata con successo.");
         return new Auto(modello, circuito, pilota);
     }
-    public Pilota creaPilota(){
+    public Pilota creaPilota(String modello){
         System.out.println("[" + this.username + "] Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");
         //Stampa elenco piloti disponibili
         try(BufferedReader br = new BufferedReader(new FileReader("piloti.txt"))){
@@ -109,7 +111,7 @@ public class Giocatore extends Thread{
                         String nome = line.substring(0, i);
                         int anni = Integer.parseInt(line.substring(i + 2));
                         if(nome.equals(pilotaScelto)){
-                            return new Pilota(nome, anni);
+                            return new Pilota(nome, anni, modello);
                         }
                     }
                 }

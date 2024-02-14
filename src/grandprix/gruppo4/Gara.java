@@ -10,23 +10,39 @@ package grandprix.gruppo4;
  * @author lorir
  */
 import java.util.ArrayList;
-public class Gara{
+import java.util.Collections;
+public class Gara extends Thread{
     public String nomeGara;
     public int nPitstop;
-    public ArrayList<Auto> elencoAuto = new ArrayList<>();
-
-    public Gara(String nomeGara, int nPitstop, ArrayList<Auto> macchine) {
+    public Circuito circuito;
+    public ArrayList<Pilota> classifica = new ArrayList<>();
+    
+    public Gara(String nomeGara, int nPitstop, Circuito circuito) {
         this.nomeGara = nomeGara;
         this.nPitstop = nPitstop;
-        this.elencoAuto = macchine;
+        this.circuito = circuito;
+    }    
+
+    @Override
+    public void run() {
+        classifica();
     }
     
-    //svolgimento della gara
-    public void svolgimento(){
-        //partenza di ciascuna auto
-        for(Auto auto : elencoAuto){
-            auto.start(); 
+    //definizione classifica
+    public void classifica(){
+        System.out.println("CLASSIFICA: ");
+        ArrayList<Long> tempi = new ArrayList<>(); //array tempi
+        //riempimento array tempi con il tempo di ciascuna auto 
+        for(Auto auto : circuito.elencoAuto){
+            tempi.add(auto.tempo);
+        }
+        //ordinamento array di tempi
+        Collections.sort(tempi);
+        
+        //riempimento classifica
+        for(int i=0;i<circuito.elencoAuto.size();i++){
+            classifica.add(circuito.elencoAuto.get(i).pilota);
+            System.out.println((i+1) + ")" + circuito.elencoAuto.get(i).pilota.nome);
         }
     }
-    
 }
