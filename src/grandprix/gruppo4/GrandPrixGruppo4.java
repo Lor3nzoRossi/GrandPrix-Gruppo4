@@ -26,7 +26,7 @@ public class GrandPrixGruppo4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {  
-        //creazione oggetti Giocatore in Giocatori.txt
+        //creazione oggetti Giocatore da Giocatori.txt
         String line;
         try {
             //apertura file in lettura
@@ -106,6 +106,7 @@ public class GrandPrixGruppo4 {
             String username = scanner.nextLine();
             System.out.println("Inserisci la password: ");
             String password = scanner.nextLine();
+            System.out.println(username);
             //*CONTROLLO CREDENZIALI IN Giocatori.txt*
             for(Giocatore giocatore : elencoGiocatori){
                 if(giocatore.username.equals(username) ){
@@ -116,15 +117,7 @@ public class GrandPrixGruppo4 {
                         if(risposta.equals("si")){
                             giocatore.creaGara();//inizio procedura di creazione gara
                         }
-                    }else{
-                        System.err.println("Password errata. Reinizializzazione procedura di accesso...");
-                        accedi();
-                        break;
                     }
-                }else{
-                    System.err.println("Username non trovato. Reinizializzazione procedura di accesso");
-                    accedi();
-                    break;
                 }
             }
         } else {

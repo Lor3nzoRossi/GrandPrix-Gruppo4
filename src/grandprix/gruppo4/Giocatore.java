@@ -33,6 +33,8 @@ public class Giocatore extends Thread{
     //Creazione gara
     public void creaGara(){
         System.out.println("["+this.username+"] Avvio procedura di creazione gara..");
+        System.out.println("["+this.username+"]Creazione circuito...");
+        Circuito circuito = creaCircuito();
         System.out.println("[" + this.username + "] Inserisci il nome della gara: ");
         String nomeGara = GrandPrixGruppo4.scanner.nextLine();
         System.out.println("[" + this.username + "] Inserisci il numero di possibili pitstop: ");
@@ -44,11 +46,18 @@ public class Giocatore extends Thread{
         GrandPrixGruppo4.scanner.nextLine();
         for(int i=0;i<nAuto;i++){
             System.out.println("[" + this.username + "] inizio procedura di creazione "+(i+1)+"° auto...");
-            Auto auto = creaAuto();
+            Auto auto = creaAuto(circuito);
             elencoAuto.add(auto);
         }
         //Creazione oggetto gara
-        Gara gara = new Gara(nomeGara, nPitStop, creaCircuito(), elencoAuto);
+        Gara gara = new Gara(nomeGara, nPitStop, elencoAuto);
+        System.out.println("Creazione gara con successo.");
+        System.out.println("Iniziare la gara?");
+        String iniziaGara = GrandPrixGruppo4.scanner.nextLine();
+        
+        if(iniziaGara.equals("si")){
+            gara.svolgimento();
+        }
     }
     //Creazione del circuito
     public Circuito creaCircuito(){
@@ -65,7 +74,7 @@ public class Giocatore extends Thread{
         return circuito;
     }
     //creazione automobile
-    public Auto creaAuto(){
+    public Auto creaAuto(Circuito circuito){
         System.out.println("[" + this.username + "] Inserisci il modello della nuova auto");
         String modello = GrandPrixGruppo4.scanner.nextLine();
         //scelta pilota
@@ -77,7 +86,7 @@ public class Giocatore extends Thread{
             }
         }while(pilota == null);
         System.out.println("[" + this.username + "] Auto " + modello + " creata con successo.");
-        return new Auto(modello,pilota);
+        return new Auto(modello, circuito, pilota);
     }
     public Pilota creaPilota(){
         System.out.println("[" + this.username + "] Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");
