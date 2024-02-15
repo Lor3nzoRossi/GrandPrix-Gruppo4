@@ -71,7 +71,7 @@ public class Giocatore extends Thread{
         System.out.println("[" + this.username + "] Inserisci il numero di giri da effettuare");
         int nGiri = GrandPrixGruppo4.scanner.nextInt();
         //Input del numero di pitstop disponibili
-        System.out.println("[" + this.username + "] Inserisci il numero di possibili pitstop: ");
+        System.out.println("[" + this.username + "] Inserisci il numero di possibili pitstop per auto: ");
         int nPitStop = GrandPrixGruppo4.scanner.nextInt();
         GrandPrixGruppo4.scanner.nextLine();
         //Creazione circuito

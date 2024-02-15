@@ -11,14 +11,14 @@ package grandprix.gruppo4;
 public class Auto extends Thread {
     public long tempo;
     public Pilota pilota;
-    private String modello;
+    public String modello;
     private int velocita = 10; //valore fisso
     private int distanzaPercorsa;
     private Circuito circuito;
     private int nPitstop;
     private SafetyCar safetyCar;
     
-
+    
     public Auto(String modello, Circuito circuito, Pilota pilota, SafetyCar safetyCar) {
         this.modello = modello;
         this.distanzaPercorsa = 0;
@@ -87,14 +87,9 @@ public class Auto extends Thread {
         int numeroCasuale = (int) (Math.random() * 100) + 1;
         
         //Se il numero è minore o uguale a 5(5%)
-        if(numeroCasuale<=40){
+        if(numeroCasuale<=20){
             System.out.println("[" + this.modello + "] GUASTO");
             safetyCar.aiuta(this);
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

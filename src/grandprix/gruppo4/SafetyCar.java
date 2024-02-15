@@ -14,12 +14,15 @@ public class SafetyCar extends Thread{
     
     public synchronized void aiuta(Auto a){
         if(!this.occupata){
-            System.out.println("Entrata safety car...");
+            this.occupata = true;
+            System.out.println("[" + a.modello + "] Entrata safety car...");
             try {
                 sleep(5000);//attesa di 5 secondi
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.println("Fine riparazione di " + a.modello);
+            this.occupata = false;
             notifyAll();
         }
     }
