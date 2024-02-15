@@ -21,7 +21,7 @@ public class SafetyCar extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Fine riparazione di " + a.modello);
+            System.out.println("[SafetyCar] Fine riparazione di " + a.modello);
             this.occupata = false;
             notifyAll();
         }

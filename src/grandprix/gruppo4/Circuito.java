@@ -13,7 +13,7 @@ import java.util.Collections;
  * @author lorir
  */
 public class Circuito extends Thread{
-    public static int nConclusi;
+    public static int nConclusi; //idea per risolvere il problema della chiamta di classifica()
     public int lunghezza;
     public int nGiri;
     public int nPitstop;

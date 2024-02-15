@@ -86,7 +86,7 @@ public class Auto extends Thread {
         // Genera un numero casuale tra 1 e 100
         int numeroCasuale = (int) (Math.random() * 100) + 1;
         
-        //Se il numero è minore o uguale a 5(5%)
+        //Se il numero è minore o uguale a 20(20%)
         if(numeroCasuale<=20){
             System.out.println("[" + this.modello + "] GUASTO");
             safetyCar.aiuta(this);
