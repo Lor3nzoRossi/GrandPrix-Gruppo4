@@ -40,7 +40,6 @@ public class GrandPrixGruppo4 {
                     if (line.charAt(i) == ';') {
                         username = line.substring(0, i);
                         password = line.substring(i + 1);
-                        System.out.println(username + " " + password);
                         //creazione giocatore
                         Giocatore giocatore = new Giocatore(username, password);
                         elencoGiocatori.add(giocatore);
