@@ -60,3 +60,6 @@ Realizzato per il corso di TIPSIT a seguito di prof. Monica Ciuchetti e Ilaria F
 Altri file:
 Giocatori.txt: file contenente i nomi e le password dei Giocatori
 Piloti.txt: file contenente i nomi dei piloti disponibili
+
+CREDITI:
+Gruppo4-5AINF
