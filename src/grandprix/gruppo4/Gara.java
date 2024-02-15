@@ -13,13 +13,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Gara extends Thread{
     public String nomeGara;
-    public int nPitstop;
     public Circuito circuito;
     public ArrayList<Pilota> classifica = new ArrayList<>();
     
-    public Gara(String nomeGara, int nPitstop, Circuito circuito) {
+    public Gara(String nomeGara, Circuito circuito) {
         this.nomeGara = nomeGara;
-        this.nPitstop = nPitstop;
         this.circuito = circuito;
     }    
 

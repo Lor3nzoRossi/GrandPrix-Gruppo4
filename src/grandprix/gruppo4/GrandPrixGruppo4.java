@@ -126,5 +126,4 @@ public class GrandPrixGruppo4 {
             registra();
         }
     }
-
 }

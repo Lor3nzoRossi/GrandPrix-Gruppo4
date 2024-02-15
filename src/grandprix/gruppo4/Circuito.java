@@ -13,23 +13,22 @@ import java.util.Collections;
  * @author lorir
  */
 public class Circuito extends Thread{
+    public static int nConclusi;
     public int lunghezza;
     public int nGiri;
+    public int nPitstop;
     public ArrayList<Auto> elencoAuto = new ArrayList<>();
     public ArrayList<Pilota> classifica = new ArrayList<>();
 
 
-    public Circuito(int lunghezza, int nGiri) {
+    public Circuito(int lunghezza, int nGiri, int nPitstop) {
         this.lunghezza = lunghezza;
         this.nGiri = nGiri;
+        this.nPitstop = nPitstop;
     }
 
     @Override
     public void run() {
-        try {
-            sleep(5000);
-        } catch (Exception e) {
-        }
         svolgimento();
     }
     

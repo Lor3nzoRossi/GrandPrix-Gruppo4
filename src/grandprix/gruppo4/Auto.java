@@ -9,19 +9,23 @@ package grandprix.gruppo4;
  * @author Studente
  */
 public class Auto extends Thread {
-    
     public long tempo;
+    public Pilota pilota;
     private String modello;
     private int velocita = 10; //valore fisso
     private int distanzaPercorsa;
     private Circuito circuito;
-    Pilota pilota;
+    private int nPitstop;
+    private SafetyCar safetyCar;
+    
 
-    public Auto(String modello, Circuito circuito, Pilota pilota) {
+    public Auto(String modello, Circuito circuito, Pilota pilota, SafetyCar safetyCar) {
         this.modello = modello;
         this.distanzaPercorsa = 0;
         this.circuito = circuito;
         this.pilota = pilota;
+        this.nPitstop = circuito.nPitstop;
+        this.safetyCar = safetyCar;
     }
     
     //comportamento di ciascuna auto
@@ -36,6 +40,10 @@ public class Auto extends Thread {
                 try {
                     // Simula il tempo che passa
                     Thread.sleep(1000);
+                    //possibilità di pitstop
+                    pitStop();
+                    //possibilità rottura
+                    possibileRottura();
                     // Aggiorna la distanza percorsa
                     distanzaPercorsa += this.velocita;
                     // Stampa l'aggiornamento
@@ -55,6 +63,38 @@ public class Auto extends Thread {
         System.out.println("[**" + this.modello + "**] - Ha completato il circuito!");
         long timeEnd = System.currentTimeMillis();
         this.tempo = timeEnd - timeStart;
+        Circuito.nConclusi++;
+    }
+    
+    //Procedura possibile pitstop
+    public void pitStop(){
+        // Genera un numero casuale tra 1 e 100
+        int numeroCasuale = (int) (Math.random() * 100) + 1;
+
+        // Se il numero casuale è minore o uguale a 30(30%)
+        if (numeroCasuale <= 30) { 
+            System.out.println("["+this.modello+"] entra nel pitstop...");
+            try {
+                sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //Procedura possibile rottura
+    public void possibileRottura(){
+        // Genera un numero casuale tra 1 e 100
+        int numeroCasuale = (int) (Math.random() * 100) + 1;
         
+        //Se il numero è minore o uguale a 5(5%)
+        if(numeroCasuale<=40){
+            System.out.println("[" + this.modello + "] GUASTO");
+            safetyCar.aiuta(this);
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
