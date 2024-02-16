@@ -58,8 +58,12 @@ public class Giocatore extends Thread{
             System.out.println("||INIZIO GARA||");
             circuito.start();
         }
-        //mostra classifica. *PROBLEMA*: far eseguire gara.start() o gara.classifica() dopo la terminazione dei Thread auto chiamati da circuito.start() o circuito.svolgimento()
-        //gara.classifica(); //ho provato a rendere gara un Thread e chiamare classifica() nel run() per gestirlo come un Thread
+        try{
+            gara.wait();
+        }catch(InterruptedException ex){
+            ex.printStackTrace();
+        }
+        gara.start(); //ho provato a rendere gara un Thread e chiamare classifica() nel run() per gestirlo come un Thread
     }
     //Creazione del circuito
     public Circuito creaCircuito(){

@@ -9,6 +9,7 @@ package grandprix.gruppo4;
  * @author Studente
  */
 public class Auto extends Thread {
+    public boolean concluso;
     public long tempo;
     public Pilota pilota;
     public String modello;
@@ -63,7 +64,8 @@ public class Auto extends Thread {
         System.out.println("[**" + this.modello + "**] - Ha completato il circuito!");
         long timeEnd = System.currentTimeMillis();
         this.tempo = timeEnd - timeStart;
-        Circuito.nConclusi++;
+        circuito.nConclusi++;
+        circuito.controllaFine();
     }
     
     //Procedura possibile pitstop

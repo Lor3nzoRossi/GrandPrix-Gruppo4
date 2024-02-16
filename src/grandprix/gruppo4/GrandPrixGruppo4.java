@@ -93,6 +93,7 @@ public class GrandPrixGruppo4 {
         boolean empty = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader("Giocatori.txt"))) {
+            //Controlla se file contiene account
             if (br.readLine() == null) {
                 empty = true;
             }

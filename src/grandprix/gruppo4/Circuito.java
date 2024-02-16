@@ -13,12 +13,11 @@ import java.util.Collections;
  * @author lorir
  */
 public class Circuito extends Thread{
-    public static int nConclusi; //idea per risolvere il problema della chiamta di classifica()
+    public int nConclusi;
     public int lunghezza;
     public int nGiri;
     public int nPitstop;
     public ArrayList<Auto> elencoAuto = new ArrayList<>();
-    public ArrayList<Pilota> classifica = new ArrayList<>();
 
 
     public Circuito(int lunghezza, int nGiri, int nPitstop) {
@@ -39,7 +38,10 @@ public class Circuito extends Thread{
             auto.start(); 
         }
     }
-    public void addAuto(Auto a){
-        elencoAuto.add(a);
+    //controlla fine
+    public void controllaFine(){
+        if(this.nConclusi >= this.elencoAuto.size()){
+            notifyAll();
+        }
     }
 }

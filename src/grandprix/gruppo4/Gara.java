@@ -36,7 +36,6 @@ public class Gara extends Thread{
         }
         //ordinamento array di tempi
         Collections.sort(tempi);
-        
         //riempimento classifica
         for(int i=0;i<circuito.elencoAuto.size();i++){
             classifica.add(circuito.elencoAuto.get(i).pilota);
