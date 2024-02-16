@@ -53,6 +53,9 @@ public class GrandPrixGruppo4 {
         catch (IOException ex) {
             System.out.println(ex);
         }
+        //eliminazione file classifica
+        File fileClassifica = new File("classifica.txt");
+        fileClassifica.delete();
         //Login or signup
         System.out.println("Vuoi eseguire l'accesso? Oppure la registrazione?(accesso/registrazione)");
         String LoginOrSignup = scanner.nextLine();

@@ -58,11 +58,6 @@ public class Giocatore extends Thread{
             System.out.println("||INIZIO GARA||");
             circuito.start();
         }
-        try{
-            gara.wait();
-        }catch(InterruptedException ex){
-            ex.printStackTrace();
-        }
     }
     //Creazione del circuito
     public Circuito creaCircuito(){
@@ -93,8 +88,15 @@ public class Giocatore extends Thread{
                 System.err.println("[" + this.username + "] Errore nella creazione di "+modello+". Scegli un pilota presente nella lista mostrata.");
             }
         }while(pilota == null);
+        //truccare una macchina
+        boolean truccata = false;
+        System.out.println("Vuoi che sia truccata?");
+        String risposta_truccata = GrandPrixGruppo4.scanner.nextLine();
+        if(risposta_truccata.equals("si")){
+            truccata = true;
+        }
         System.out.println("[" + this.username + "] Auto " + modello + " creata con successo.");
-        return new Auto(modello, circuito, pilota, safetyCar);
+        return new Auto(modello, circuito, pilota, safetyCar, truccata);
     }
     public Pilota creaPilota(String modello){
         System.out.println("[" + this.username + "] Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");

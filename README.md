@@ -10,7 +10,7 @@ Funzionalità:
 
 Personalizzazione
 
--Auto(esistenti o di propria invenzione)
+-Auto(esistenti o di propria invenzione e possibilità di truccarle per renderle più veloci)
 -Pilota(viene fornito un menù da cui scegliere)
 -Circuito(lunghezza, numero di possibili pitstop e numero di giri)
 
@@ -22,6 +22,8 @@ L'esecuzione della gara avverrà mostrando, ogni secondo, al Giocatore la progre
 spazio rimanente per completare il giro.
 Durante la gara le auto potrebbero fermarsi per fare un pit stop, che le bloccherà per 2 secondi,
 oppure intercorrere in un guasto che le fermerà per 5.
+Finita la gara, verrà annunciata la fine della stessa e verrà stilata la relativa classifica, mostrata in output e scritta
+all'interno del file Classifica.txt.
 
 Utilizzo:
 
@@ -31,7 +33,7 @@ Successivamente inizierà la procedura di creazione della gara su conferma del G
 creazione del circuito dove verrà richiesta la lunghezza poi il numero di giri e possibili pitstop durante la
 competizione. Verrà richiesto il nome della Gara e quante auto si vuole far gareggiare, per poi specificarne
 il modello e Pilota.
-Raccolte le informazioni necessarie, chiederà all'utente se fare iniziare la gara (rispondere "si" per confermare).
+Raccolte le informazioni necessarie, chiederà all'utente conferma per iniziare la gara(conferma digitando "si").
 
 Esempio:
 
@@ -47,6 +49,11 @@ Esempio:
 [Mazda] ha percorso: 30/200
 [Mazda] entra nel pitstop...
 [Safety car] Fine riparazione di Punto
+...
+NOMEGARA si è conclusa!
+CLASSIFICA:
+1) Alonso - Punto
+2) Norris - Mazda
 
 Licenza:
 Questo programma è distribuito sotto la licenza GRUPPO4-5AINF.
@@ -60,6 +67,7 @@ Realizzato per il corso di TIPSIT a seguito di prof. Monica Ciuchetti e Ilaria F
 Altri file:
 Giocatori.txt: file contenente i nomi e le password dei Giocatori
 Piloti.txt: file contenente i nomi dei piloti disponibili
+Classifica.txt file contenente la classifica finale
 
 CREDITI:
 Gruppo4-5AINF

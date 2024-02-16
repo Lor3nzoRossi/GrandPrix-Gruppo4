@@ -10,7 +10,6 @@ package grandprix.gruppo4;
  */
 public class Auto extends Thread {
     public boolean concluso;
-    public long tempo;
     public Pilota pilota;
     public String modello;
     private int velocita = 10; //valore fisso
@@ -20,19 +19,21 @@ public class Auto extends Thread {
     private SafetyCar safetyCar;
     
     
-    public Auto(String modello, Circuito circuito, Pilota pilota, SafetyCar safetyCar) {
+    public Auto(String modello, Circuito circuito, Pilota pilota, SafetyCar safetyCar, boolean truccata) {
         this.modello = modello;
         this.distanzaPercorsa = 0;
         this.circuito = circuito;
         this.pilota = pilota;
         this.nPitstop = circuito.nPitstop;
         this.safetyCar = safetyCar;
+        if(truccata){
+            this.velocita+=20;
+        }
     }
     
     //comportamento di ciascuna auto
     @Override
     public void run() {
-        long timeStart = System.currentTimeMillis();
         int giroCorrente = 1;
         int nGiri = this.circuito.nGiri;
         int distanzaPercorsa = this.distanzaPercorsa;
@@ -41,14 +42,14 @@ public class Auto extends Thread {
                 try {
                     // Simula il tempo che passa
                     Thread.sleep(1000);
-                    //possibilità di pitstop
-                    pitStop();
-                    //possibilità rottura
-                    possibileRottura();
                     // Aggiorna la distanza percorsa
                     distanzaPercorsa += this.velocita;
                     // Stampa l'aggiornamento
                     System.out.println("["+this.modello+"] ha percorso: "+distanzaPercorsa+"/"+this.circuito.lunghezza);
+                    //possibilità di pitstop
+                    pitStop();
+                    //possibilità rottura
+                    possibileRottura();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -62,8 +63,6 @@ public class Auto extends Thread {
 
         // Auto ha completato il circuito
         System.out.println("[**" + this.modello + "**] - Ha completato il circuito!");
-        long timeEnd = System.currentTimeMillis();
-        this.tempo = timeEnd - timeStart;
         circuito.classifica.addAuto(this);
     }
     
