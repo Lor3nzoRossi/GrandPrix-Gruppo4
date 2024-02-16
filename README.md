@@ -28,7 +28,7 @@ Utilizzo:
 Inizialmente verrà richiesto di fare l'accesso(se si possiede già un account), altrimenti se ne
 può creare uno gratuitamente scegliendo di registrarsi.
 Successivamente inizierà la procedura di creazione della gara su conferma del Giocatore, quindi prima la
-creazione del circuito dove verranno richieste lunghezza, numero di giri e possibili pitstop durante la
+creazione del circuito dove verrà richiesta la lunghezza poi il numero di giri e possibili pitstop durante la
 competizione. Verrà richiesto il nome della Gara e quante auto si vuole far gareggiare, per poi specificarne
 il modello e Pilota.
 Raccolte le informazioni necessarie, chiederà all'utente se fare iniziare la gara (rispondere "si" per confermare).
