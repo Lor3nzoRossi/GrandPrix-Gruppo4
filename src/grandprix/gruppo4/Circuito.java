@@ -13,10 +13,10 @@ import java.util.Collections;
  * @author lorir
  */
 public class Circuito extends Thread{
-    public int nConclusi;
     public int lunghezza;
     public int nGiri;
     public int nPitstop;
+    public Classifica classifica;
     public ArrayList<Auto> elencoAuto = new ArrayList<>();
 
 
@@ -33,15 +33,10 @@ public class Circuito extends Thread{
     
     //svolgimento della gara
     public void svolgimento(){
+        classifica = new Classifica(this.elencoAuto.size());
         //partenza di ciascuna auto
         for(Auto auto : this.elencoAuto){
             auto.start(); 
-        }
-    }
-    //controlla fine
-    public void controllaFine(){
-        if(this.nConclusi >= this.elencoAuto.size()){
-            notifyAll();
         }
     }
 }

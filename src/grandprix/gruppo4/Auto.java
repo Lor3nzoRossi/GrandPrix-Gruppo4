@@ -64,8 +64,7 @@ public class Auto extends Thread {
         System.out.println("[**" + this.modello + "**] - Ha completato il circuito!");
         long timeEnd = System.currentTimeMillis();
         this.tempo = timeEnd - timeStart;
-        circuito.nConclusi++;
-        circuito.controllaFine();
+        circuito.classifica.addAuto(this);
     }
     
     //Procedura possibile pitstop

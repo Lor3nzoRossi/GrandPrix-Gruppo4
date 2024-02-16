@@ -20,11 +20,6 @@ public class Gara extends Thread{
         this.nomeGara = nomeGara;
         this.circuito = circuito;
     }    
-
-    @Override
-    public void run() {
-        classifica();
-    }
     
     //definizione classifica
     public void classifica(){

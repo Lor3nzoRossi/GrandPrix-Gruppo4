@@ -63,7 +63,6 @@ public class Giocatore extends Thread{
         }catch(InterruptedException ex){
             ex.printStackTrace();
         }
-        gara.start(); //ho provato a rendere gara un Thread e chiamare classifica() nel run() per gestirlo come un Thread
     }
     //Creazione del circuito
     public Circuito creaCircuito(){
