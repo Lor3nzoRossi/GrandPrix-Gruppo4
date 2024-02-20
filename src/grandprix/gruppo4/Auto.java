@@ -9,7 +9,6 @@ package grandprix.gruppo4;
  * @author Studente
  */
 public class Auto extends Thread {
-    public boolean concluso;
     public Pilota pilota;
     public String modello;
     private int velocita = 10; //valore fisso
