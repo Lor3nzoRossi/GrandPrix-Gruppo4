@@ -36,7 +36,7 @@ public class Classifica {
                 System.out.println(Gara.nomeGara+" si è conclusa!");
                 System.out.println("CLASSIFICA:");
                 for(int i=0;i<this.classifica.size();i++){
-                    System.out.println((i+1) + ") "+this.classifica.get(i).pilota.nome + " - " + this.classifica.get(i).modello);
+                    System.out.println((i+1) + ") "+this.classifica.get(i).pilota.nome + "("+ this.classifica.get(i).pilota.anni + ")- " + this.classifica.get(i).modello);
                 }
                 scritturaClassifica();
             }

@@ -33,7 +33,7 @@ public class Giocatore extends Thread{
     //Creazione gara
     public void creaGara(){
         System.out.println("["+this.username+"] Avvio procedura di creazione gara..");
-        System.out.println("["+this.username+"]Creazione circuito...");
+        System.out.println("["+this.username+"] Creazione circuito...");
         Circuito circuito = creaCircuito(); // creazione circuito
         System.out.println("[" + this.username + "] Inserisci il nome della gara: ");
         String nomeGara = GrandPrixGruppo4.scanner.nextLine();
@@ -55,7 +55,6 @@ public class Giocatore extends Thread{
         String iniziaGara = GrandPrixGruppo4.scanner.nextLine();
         
         if(iniziaGara.equals("si")){
-            System.out.println("||INIZIO GARA||");
             circuito.start();
         }
     }
@@ -83,7 +82,7 @@ public class Giocatore extends Thread{
         //scelta pilota
         Pilota pilota;
         do{
-            pilota = creaPilota(modello);
+            pilota = scegliPilota(modello);
             if(pilota == null){
                 System.err.println("[" + this.username + "] Errore nella creazione di "+modello+". Scegli un pilota presente nella lista mostrata.");
             }
@@ -98,7 +97,7 @@ public class Giocatore extends Thread{
         System.out.println("[" + this.username + "] Auto " + modello + " creata con successo.");
         return new Auto(modello, circuito, pilota, safetyCar, truccata);
     }
-    public Pilota creaPilota(String modello){
+    public Pilota scegliPilota(String modello){
         System.out.println("[" + this.username + "] Inserisci il nome del Pilota, scegliendo fra i piloti disponibili:\n");
         //Stampa elenco piloti disponibili
         try(BufferedReader br = new BufferedReader(new FileReader("piloti.txt"))){

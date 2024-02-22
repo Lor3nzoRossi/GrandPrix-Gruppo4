@@ -34,6 +34,16 @@ public class Circuito extends Thread{
     //svolgimento della gara
     public void svolgimento(){
         classifica = new Classifica(this.elencoAuto.size());
+        //countdown
+        for(int i=1;i<=3;i++){
+            System.out.println(i + "!");
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("||INIZIO GARA||");
         //partenza di ciascuna auto
         for(Auto auto : this.elencoAuto){
             auto.start(); 

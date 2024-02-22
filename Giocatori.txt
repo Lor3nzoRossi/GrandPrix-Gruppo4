@@ -1,3 +1,5 @@
 giocatore1;123
 giocatore2;456
 giocatore3;palla
+giocatore4;tavolo
+giocatore5;sasso

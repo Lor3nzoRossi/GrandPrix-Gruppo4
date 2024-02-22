@@ -36,19 +36,18 @@ il modello e Pilota.
 Raccolte le informazioni necessarie, chiederà all'utente conferma per iniziare la gara(conferma digitando "si").
 
 Esempio:
-
-[Punto] ha percorso: 20/200
-[CinaCar] entra nel pitstop...
-[Punto] GUASTO
-[Mazda] ha percorso: 10/200
-[Illaary] ha percorso: 10/200
+[Peugeot] ha percorso: 250/300
+[Peugeot] entra nel pitstop...
+[Peugeot] ha percorso: 260/300
+[Peugeot] entra nel pitstop...
+[SafetyCar] Fine riparazione di Fiesta
 [Punto] Entrata safety car...
-[Illaary] GUASTO
-[Mazda] ha percorso: 20/200
-[CinaCar] GUASTO
-[Mazda] ha percorso: 30/200
-[Mazda] entra nel pitstop...
-[Safety car] Fine riparazione di Punto
+[Fiesta] ha percorso: 280/300
+[Fiesta] GUASTO
+[Peugeot] ha percorso: 270/300
+[Peugeot] GUASTO
+[SafetyCar] Fine riparazione di Punto
+[Peugeot] Entrata safety car...
 ...
 NOMEGARA si è conclusa!
 CLASSIFICA:

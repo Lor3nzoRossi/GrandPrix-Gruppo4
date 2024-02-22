@@ -17,7 +17,7 @@ public class SafetyCar extends Thread{
             this.occupata = true;
             System.out.println("[" + a.modello + "] Entrata safety car...");
             try {
-                sleep(5000);//attesa di 5 secondi
+                a.sleep(5000);//attesa di 5 secondi
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
