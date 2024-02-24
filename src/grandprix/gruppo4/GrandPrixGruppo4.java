@@ -7,7 +7,7 @@ package grandprix.gruppo4;
 
 /**
  *
- * @author lorir, Bighi, La Mantia, Fahim
+ * @author Rossi, Bighi, La Mantia, Fahim
  */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
