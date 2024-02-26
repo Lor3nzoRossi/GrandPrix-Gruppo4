@@ -12,8 +12,8 @@ package grandprix.gruppo4;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-public class Giocatore extends Thread{
+
+public class Giocatore{
     public String username;
     private String password;
 

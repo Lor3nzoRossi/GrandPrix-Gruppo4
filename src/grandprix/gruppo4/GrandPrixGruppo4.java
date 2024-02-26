@@ -43,14 +43,12 @@ public class GrandPrixGruppo4 {
                         //creazione giocatore
                         Giocatore giocatore = new Giocatore(username, password);
                         elencoGiocatori.add(giocatore);
-                        break;
                     }
                 }
             }
         }catch (FileNotFoundException ex) {
             System.out.println("file non trovato");
-        } 
-        catch (IOException ex) {
+        }catch (IOException ex) {
             System.out.println(ex);
         }
         //eliminazione file classifica
