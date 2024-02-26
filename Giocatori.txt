@@ -4,3 +4,4 @@ giocatore3;palla
 giocatore4;tavolo
 giocatore5;sasso
 giocatore5;key
+AlessandroBighi;luciBighi

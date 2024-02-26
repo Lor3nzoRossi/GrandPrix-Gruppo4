@@ -10,7 +10,7 @@ package grandprix.gruppo4;
  * @author lorir
  */
 import java.util.ArrayList;
-public class Gara extends Thread{
+public class Gara{
     public static String nomeGara;
     public Circuito circuito;
     public ArrayList<Pilota> classifica = new ArrayList<>();

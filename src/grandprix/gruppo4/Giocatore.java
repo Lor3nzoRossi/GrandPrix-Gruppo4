@@ -37,12 +37,21 @@ public class Giocatore{
         Circuito circuito = creaCircuito(); // creazione circuito
         System.out.println("[" + this.username + "] Inserisci il nome della gara: ");
         String nomeGara = GrandPrixGruppo4.scanner.nextLine();
+        
         //creazione Safety Car
         SafetyCar safetyCar = new SafetyCar();
+        
         //creazione auto
-        System.out.println("[" + this.username + "] Quante auto vuoi far gareggiare?");
-        int nAuto = GrandPrixGruppo4.scanner.nextInt();
-        GrandPrixGruppo4.scanner.nextLine();
+        int nAuto;
+        do{
+            System.out.println("[" + this.username + "] Quante auto vuoi far gareggiare?");
+            nAuto = GrandPrixGruppo4.scanner.nextInt();
+            GrandPrixGruppo4.scanner.nextLine();
+            if(nAuto<2){
+                System.out.println("Devi far gareggiare almeno 2 auto!");
+            }
+        }while(nAuto<2);
+        
         for(int i=0;i<nAuto;i++){
             System.out.println("[" + this.username + "] inizio procedura di creazione "+(i+1)+"° auto...");
             Auto auto = creaAuto(circuito, safetyCar);
