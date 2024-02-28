@@ -61,7 +61,7 @@ public class GrandPrixGruppo4 {
             case "accesso":
                 accedi();
                 break;
-            case "registrazione":
+            case "registrazione": 
                 registra();
                 break;
         }

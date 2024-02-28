@@ -11,7 +11,7 @@ package grandprix.gruppo4;
 public class Auto extends Thread {
     public Pilota pilota;
     public String modello;
-    private int velocita = 10; //valore fisso
+    public static int velocita = 10; //valore default
     private int distanzaPercorsa;
     private Circuito circuito;
     private int nPitstop;
@@ -43,6 +43,10 @@ public class Auto extends Thread {
                     Thread.sleep(1000);
                     // Aggiorna la distanza percorsa
                     distanzaPercorsa += this.velocita;
+                    // Se la distanza percorsa sfora la lunghezza del circuito
+                    if(distanzaPercorsa>this.circuito.lunghezza){
+                        distanzaPercorsa = this.circuito.lunghezza;
+                    }
                     // Stampa l'aggiornamento
                     System.out.println("["+this.modello+"] ha percorso: "+distanzaPercorsa+"/"+this.circuito.lunghezza);
                     //possibilità di pitstop

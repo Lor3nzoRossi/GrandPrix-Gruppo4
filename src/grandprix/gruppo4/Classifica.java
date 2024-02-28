@@ -18,7 +18,7 @@ public class Classifica {
     public int nAuto;
     public ArrayList<Auto> classifica = new ArrayList<>();
     public boolean semaforo;
-
+    
     public Classifica(int nAuto) {
         this.nAuto = nAuto;
         this.semaforo = true;

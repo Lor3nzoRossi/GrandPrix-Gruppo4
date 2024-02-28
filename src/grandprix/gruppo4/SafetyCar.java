@@ -13,17 +13,29 @@ public class SafetyCar extends Thread{
     public boolean occupata;
     
     public synchronized void aiuta(Auto a){
-        if(!this.occupata){
-            this.occupata = true;
-            System.out.println("[" + a.modello + "] Entrata safety car...");
+        while(this.occupata){
             try {
-                a.sleep(5000);//attesa di 5 secondi
+                a.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("[SafetyCar] Fine riparazione di " + a.modello);
-            this.occupata = false;
-            notifyAll();
         }
+        this.occupata = true;
+        System.out.println("[" + a.modello + "] Entrata safety car...");
+        //rallentamento generale della auto per 5 secondi
+        int velocitàAuto = Auto.velocita;
+        for(int i=0;i<5;i++){
+            try {
+                this.sleep(1000);
+                Auto.velocita-=1;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        Auto.velocita = velocitàAuto;
+        //fine riparazione
+        System.out.println("[SafetyCar] Fine riparazione di " + a.modello);
+        notifyAll();
+        this.occupata = false;
     }
 }
